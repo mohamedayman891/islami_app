@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:dots_indicator/dots_indicator.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:islami_app/core/model/onboarding_dm.dart';
+import 'package:islami_app/core/utils/app_route.dart';
+import 'package:islami_app/core/utils/app_colors.dart';
 import 'package:islami_app/core/utils/app_images.dart';
+import 'package:islami_app/core/utils/app_styles.dart';
 import 'package:islami_app/features/on_boarding/on_boarding_item.dart';
 
 class OnBoardingScreen extends StatefulWidget {
@@ -11,36 +15,17 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
-  static List<OnBoardingDm> onBoardingItem = [
-    OnBoardingDm(
-      image: Assets.imagesOnBoarding1,
-      title: "Welcome To Islami App",
-      subtitle: "",
-    ),
-    OnBoardingDm(
-      image: Assets.imagesOnBoarding2,
-      title: "Welcome To Islami",
-      subtitle: "We Are Very Excited To Have You In Our Community",
-    ),
-    OnBoardingDm(
-      image: Assets.imagesOnBoarding3,
-      title: "Reading the Quran",
-      subtitle: "Read, and your Lord is the Most Generous",
-    ),
-    OnBoardingDm(
-      image: Assets.imagesOnBoarding3,
-      title: "Bearish",
-      subtitle: "Praise the name of your Lord, the Most High",
-    ),
-    OnBoardingDm(
-      image: Assets.imagesOnBoarding3,
-      title: "Holy Quran Radio",
-      subtitle:
-          "You can listen to the Holy Quran Radio through the application for free and easily",
-    ),
-  ];
   int currentPage = 0;
-  PageController pageController = PageController();
+  PageController pageController = PageController(initialPage: 0);
+
+  @override
+  void initState() {
+    pageController.addListener(() {
+      currentPage = pageController.page?.toInt() ?? 0;
+      setState(() {});
+    });
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -50,22 +35,85 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-      controller: pageController,
-      onPageChanged: (index) {
-        setState(() {
-          currentPage = index;
-        });
-      },
-      itemCount: onBoardingItem.length,
-      itemBuilder: (context, index) {
-        return OnBoardingItem(
-          pageController: pageController,
-          onBoardingDm: onBoardingItem[index],
-          currentPage: currentPage,
-          length: onBoardingItem.length,
-        );
-      },
+    return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          spacing: 10,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Expanded(flex: 2, child: Image.asset(Assets.imagesIslamiLogo)),
+            Expanded(
+              flex: 6,
+              child: PageView.builder(
+                onPageChanged: (index) {
+                  setState(() {
+                    currentPage = index;
+                  });
+                },
+                controller: pageController,
+                itemCount: OnBoardingDM.onBoardingData.length,
+                itemBuilder: (context, index) {
+                  return OnBoardingItem(
+                    onBoarding: OnBoardingDM.onBoardingData[index],
+                  );
+                },
+              ),
+            ),
+            // Expanded(child: SizedBox(height: 15)),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      pageController.previousPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                    child: Visibility(
+                      visible: currentPage == 0 ? false : true,
+                      child: Text("Back", style: AppStyles.bold16Gold),
+                    ),
+                  ),
+                  DotsIndicator(
+                    dotsCount: 5,
+                    position: currentPage.toDouble(),
+                    decorator: DotsDecorator(
+                      color: AppColors.greyDots,
+                      activeColor: AppColors.primaryColor,
+                      size: const Size(7, 7),
+                      activeSize: const Size(18, 7),
+                      activeShape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(27),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      if (currentPage == 4) {
+                        Navigator.push(context, AppRoute.homeScreen);
+                      } else {
+                        pageController.nextPage(
+                          duration: Duration(milliseconds: 300),
+                          curve: Curves.easeInOut,
+                        );
+                      }
+                    },
+                    child: Text(
+                      currentPage == 4 ? "Finish" : "Next",
+                      style: AppStyles.bold16Gold,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

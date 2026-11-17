@@ -1,11 +1,14 @@
 import 'dart:ui';
-import 'package:flutter/material.dart';
-import 'package:islami_app/core/routes/app_route.dart';
-import 'package:islami_app/features/home/hadeeth/hadeeth_detailed_screen.dart';
-import 'package:islami_app/features/home/home_screen.dart';
+import 'package:islami_app/core/provider/radio_manager_provider.dart';
+import 'package:islami_app/core/utils/shared_prefs.dart';
+import 'package:islami_app/features/splash/splash_screen.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const IslamiApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPrefs.init();
+  runApp(IslamiApp());
 }
 
 class IslamiApp extends StatelessWidget {
@@ -13,15 +16,15 @@ class IslamiApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      scrollBehavior: MaterialScrollBehavior().copyWith(
-        dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse},
+    return ChangeNotifierProvider(
+      create: (context) => RadioManagerProvider(),
+      child: MaterialApp(
+        scrollBehavior: MaterialScrollBehavior().copyWith(
+          dragDevices: {PointerDeviceKind.touch, PointerDeviceKind.mouse},
+        ),
+        debugShowCheckedModeBanner: false,
+        home: SplashScreen(),
       ),
-      debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
-      routes: {
-        AppRoute.hadeethDetailedRouteName: (context) => HadeethDetailedScreen(),
-      },
     );
   }
 }

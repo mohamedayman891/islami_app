@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:islami_app/core/routes/app_route.dart';
+import 'package:islami_app/core/utils/shared_prefs.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:islami_app/core/utils/app_route.dart';
 import 'package:islami_app/core/utils/app_colors.dart';
 import 'package:islami_app/core/utils/app_images.dart';
 import 'package:islami_app/core/utils/app_styles.dart';
@@ -14,12 +15,16 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 1), () {
-      if (mounted) {
+    super.initState();
+    Future.delayed(Duration(seconds: 1), () async {
+      bool isFirstTime = SharedPrefs.getBool('firstTime') ?? true;
+      if (isFirstTime) {
+        SharedPrefs.setBool('firstTime', false);
         Navigator.pushReplacement(context, AppRoute.splashScreen2);
+      } else {
+        Navigator.pushReplacement(context, AppRoute.homeScreen);
       }
     });
-    super.initState();
   }
 
   @override
@@ -61,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 Text(
                   "Supervised by Mohamed Ayman",
                   style: AppStyles.regular16White.copyWith(
-                    color: AppColors.gold,
+                    color: AppColors.primaryColor,
                   ),
                 ),
                 const SizedBox(height: 30),

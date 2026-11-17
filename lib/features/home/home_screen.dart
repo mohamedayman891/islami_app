@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:islami_app/core/utils/app_colors.dart';
 import 'package:islami_app/core/utils/app_images.dart';
 import 'package:islami_app/core/utils/app_styles.dart';
@@ -16,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int selectedIndex = 0;
   List<Widget> taps = [
     QuranTap(),
     HadethTap(),
@@ -33,7 +34,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  int selectedIndex = 0;
   BottomNavigationBar buildBottomNavigationBar() {
     return BottomNavigationBar(
       currentIndex: selectedIndex,
@@ -43,51 +43,62 @@ class _HomeScreenState extends State<HomeScreen> {
         });
       },
       type: BottomNavigationBarType.fixed,
-      backgroundColor: AppColors.gold,
-      selectedItemColor: Colors.white,
-      selectedLabelStyle: AppStyles.bold12White,
-      // unselectedIconTheme: IconThemeData(size: 24),
+      backgroundColor: AppColors.primaryColor,
+      selectedItemColor: AppColors.white,
+      selectedLabelStyle: AppStyles.regular12White,
       items: [
         BottomNavigationBarItem(
-          icon: buildNavigationIcon(Assets.imagesIcQuran, selectedIndex == 0),
+          icon: buildNavigationBarIcon(
+            Assets.imagesIcQuran,
+            selectedIndex == 0,
+          ),
           label: "Quran",
         ),
         BottomNavigationBarItem(
-          icon: buildNavigationIcon(Assets.imagesIcHadeth, selectedIndex == 1),
-          label: "Hadeth",
+          icon: buildNavigationBarIcon(
+            Assets.imagesIcHadeth,
+            selectedIndex == 1,
+          ),
+          label: "Hadeeth",
         ),
         BottomNavigationBarItem(
-          icon: buildNavigationIcon(Assets.imagesIcSebha, selectedIndex == 2),
+          icon: buildNavigationBarIcon(
+            Assets.imagesIcSebha,
+            selectedIndex == 2,
+          ),
           label: "Sebha",
         ),
         BottomNavigationBarItem(
-          icon: buildNavigationIcon(Assets.imagesIcRadio, selectedIndex == 3),
+          icon: buildNavigationBarIcon(
+            Assets.imagesIcRadio,
+            selectedIndex == 3,
+          ),
           label: "Radio",
         ),
         BottomNavigationBarItem(
-          icon: buildNavigationIcon(Assets.imagesIcTime, selectedIndex == 4),
+          icon: buildNavigationBarIcon(Assets.imagesIcTime, selectedIndex == 4),
           label: "Time",
         ),
       ],
     );
   }
 
-  Widget buildNavigationIcon(String icon, bool isSelected) {
+  Widget buildNavigationBarIcon(String icon, bool isSelected) {
     return Container(
       padding: isSelected
           ? EdgeInsets.symmetric(vertical: 6, horizontal: 20)
           : null,
       decoration: BoxDecoration(
         color: isSelected
-            ? Colors.black.withValues(alpha: 0.6)
-            : Colors.transparent,
+            ? AppColors.black.withValues(alpha: 0.6)
+            : AppColors.transparent,
         borderRadius: BorderRadius.circular(66),
       ),
       child: Image.asset(
         icon,
         height: 25,
         width: 25,
-        color: isSelected ? Colors.white : Colors.black,
+        color: isSelected ? AppColors.white : AppColors.black,
       ),
     );
   }

@@ -4,6 +4,8 @@ class Assets {
   
   static const String imagesBottomDecoration = "assets/images/bottom_decoration.png";
 
+  static const String imagesEveningAzkar = "assets/images/evening_azkar.png";
+
   static const String imagesHadethBackground = "assets/images/hadeth_background.png";
 
   static const String imagesHadethCardBackground = "assets/images/hadeth_card_background.png";
@@ -32,8 +34,6 @@ class Assets {
 
   static const String imagesIcRadio4x = "assets/images/ic_radio@4x.png";
 
-  static const String imagesIcSearchField = "assets/images/ic_search_field.png";
-
   static const String imagesIcSebha = "assets/images/ic_sebha.png";
 
   static const String imagesIcSebha2x = "assets/images/ic_sebha@2x.png";
@@ -56,6 +56,8 @@ class Assets {
 
   static const String imagesLeftCorner = "assets/images/left_corner.png";
 
+  static const String imagesMorningAzkar = "assets/images/morning_azkar.png";
+
   static const String imagesMosque = "assets/images/mosque.png";
 
   static const String imagesMostRecent = "assets/images/most_recent.png";
@@ -70,7 +72,17 @@ class Assets {
 
   static const String imagesOnBoarding5 = "assets/images/onBoarding5.png";
 
+  static const String imagesPostPrayerAzkar = "assets/images/post_prayer_azkar.png";
+
+  static const String imagesPrayTime = "assets/images/pray_time.png";
+
+  static const String imagesProphetsDuas = "assets/images/prophets_duas.png";
+
   static const String imagesQuranBackground = "assets/images/quran_background.png";
+
+  static const String imagesQuranicDuas = "assets/images/quranic_duas.png";
+
+  static const String imagesRadioBackground = "assets/images/radio_background.png";
 
   static const String imagesRightCorner = "assets/images/right_corner.png";
 
@@ -88,6 +100,14 @@ class Assets {
 
   static const String imagesSebhaBackground = "assets/images/sebha_background.png";
 
+  static const String imagesSebhaBody = "assets/images/sebha_body.png";
+
+  static const String imagesSebhaHead = "assets/images/sebha_head.png";
+
+  static const String imagesSleepingAzkar = "assets/images/sleeping_azkar.png";
+
+  static const String imagesSoundWave = "assets/images/sound_wave.png";
+
   static const String imagesSplash2 = "assets/images/splash2.png";
 
   static const String imagesSplashBackground = "assets/images/splash_background.png";
@@ -101,5 +121,11 @@ class Assets {
   static const String imagesSplashScreen = "assets/images/splash_screen.png";
 
   static const String imagesSureNumber = "assets/images/sure_number.png";
+
+  static const String imagesTasabeehAzkar = "assets/images/tasabeeh_azkar.png";
+
+  static const String imagesTimeBackground = "assets/images/time_background.png";
+
+  static const String imagesWakingUpAzkar = "assets/images/waking_up_azkar.png";
 }
 
