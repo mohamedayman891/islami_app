@@ -19,18 +19,16 @@ class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
   List<Widget> taps = [
     QuranTap(),
-    HadethTap(),
+    HadeethTap(),
     SebhaTap(),
     RadioTap(),
     TimeTap(),
   ];
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        bottomNavigationBar: buildBottomNavigationBar(),
-        body: taps[selectedIndex],
-      ),
+    return Scaffold(
+      bottomNavigationBar: buildBottomNavigationBar(),
+      body: taps[selectedIndex],
     );
   }
 

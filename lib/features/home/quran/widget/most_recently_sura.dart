@@ -5,8 +5,8 @@ import 'package:islami_app/core/utils/app_colors.dart';
 import 'package:islami_app/core/utils/app_images.dart';
 import 'package:islami_app/core/utils/app_styles.dart';
 
-class MostRecentlySuras extends StatelessWidget {
-  const MostRecentlySuras({super.key, required this.suraDM});
+class MostRecentlySura extends StatelessWidget {
+  const MostRecentlySura({super.key, required this.suraDM});
   final SuraDM suraDM;
   @override
   Widget build(BuildContext context) {

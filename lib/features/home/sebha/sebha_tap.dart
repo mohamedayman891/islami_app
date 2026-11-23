@@ -19,7 +19,7 @@ class _SebhaTapState extends State<SebhaTap> {
   int counter = 0;
   int showTasbeeh = 0;
   double turns = 0;
-  void _updateTasbeh() {
+  void _updateTasbeeh() {
     setState(() {
       turns += 0.03;
       counter++;
@@ -59,7 +59,7 @@ class _SebhaTapState extends State<SebhaTap> {
               ),
             ),
             Expanded(
-              flex: 7,
+              flex: 6,
               child: Stack(
                 alignment: Alignment.topCenter,
                 children: [
@@ -72,7 +72,7 @@ class _SebhaTapState extends State<SebhaTap> {
                     top: size.height * 0.09,
                     child: InkWell(
                       onTap: () {
-                        _updateTasbeh();
+                        _updateTasbeeh();
                       },
                       child: Stack(
                         alignment: Alignment.center,

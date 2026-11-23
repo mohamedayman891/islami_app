@@ -5,15 +5,15 @@ import 'package:islami_app/core/utils/app_colors.dart';
 import 'package:islami_app/core/utils/app_styles.dart';
 
 class AzkarCard extends StatelessWidget {
-  const AzkarCard({super.key, required this.azkar});
-  final AzkarDM azkar;
+  const AzkarCard({super.key, required this.azkarDM});
+  final AzkarDM azkarDM;
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return InkWell(
       onTap: () {
-        Navigator.push(context, AppRoute.azkarDetailed(azkar));
+        Navigator.push(context, AppRoute.azkarDetailed(azkarDM));
       },
       borderRadius: BorderRadius.circular(20),
       child: Container(
@@ -32,7 +32,7 @@ class AzkarCard extends StatelessWidget {
                   horizontal: 14,
                   vertical: 10,
                 ),
-                child: Image.asset(azkar.image, fit: BoxFit.contain),
+                child: Image.asset(azkarDM.image, fit: BoxFit.contain),
               ),
             ),
             Padding(
@@ -40,7 +40,7 @@ class AzkarCard extends StatelessWidget {
               child: FittedBox(
                 fit: BoxFit.scaleDown,
                 child: Text(
-                  azkar.azkarEn,
+                  azkarDM.azkarEn,
                   style: AppStyles.bold16White,
                   textAlign: TextAlign.center,
                 ),

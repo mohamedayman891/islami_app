@@ -5,8 +5,8 @@ import 'package:islami_app/core/utils/app_colors.dart';
 import 'package:islami_app/core/utils/app_constants.dart';
 import 'package:islami_app/core/utils/app_images.dart';
 import 'package:islami_app/core/utils/app_styles.dart';
-import 'package:islami_app/features/home/quran/widget/most_recently_suras.dart';
-import 'package:islami_app/features/home/quran/widget/suras_list.dart';
+import 'package:islami_app/features/home/quran/widget/most_recently_sura.dart';
+import 'package:islami_app/features/home/quran/widget/sura_list.dart';
 
 class QuranTap extends StatefulWidget {
   const QuranTap({super.key});
@@ -50,7 +50,7 @@ class _QuranTapState extends State<QuranTap> {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.only(right: 16, left: 16, top: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -69,7 +69,7 @@ class _QuranTapState extends State<QuranTap> {
             SizedBox(height: height * 0.15, child: buildMostRecentlySura()),
             const SizedBox(height: 10),
             Text("Suras List ", style: AppStyles.bold16White),
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
             buildSuraListView(),
           ],
         ),
@@ -103,7 +103,7 @@ class _QuranTapState extends State<QuranTap> {
     ),
   );
   var border = OutlineInputBorder(
-    borderRadius: BorderRadius.circular(10),
+    borderRadius: BorderRadius.circular(16),
     borderSide: BorderSide(width: 1, color: AppColors.primaryColor),
   );
 
@@ -122,7 +122,7 @@ class _QuranTapState extends State<QuranTap> {
         }).toList();
         return Padding(
           padding: const EdgeInsets.only(right: 10),
-          child: MostRecentlySuras(suraDM: mostRecent[index]),
+          child: MostRecentlySura(suraDM: mostRecent[index]),
         );
       },
     );
@@ -131,7 +131,7 @@ class _QuranTapState extends State<QuranTap> {
   Widget buildSuraListView() {
     if (suraSearch.isEmpty && controller.text.trim().isNotEmpty) {
       return Center(
-        child: Text('no sura founded', style: AppStyles.bold20White),
+        child: Text('no sura found', style: AppStyles.bold20White),
       );
     }
     return Expanded(
@@ -140,7 +140,7 @@ class _QuranTapState extends State<QuranTap> {
             ? suras.length
             : suraSearch.length,
         itemBuilder: (context, index) {
-          return SurasList(
+          return SuraList(
             suraDM: (suraSearch.isEmpty && controller.text.trim().isEmpty)
                 ? suras[index]
                 : suraSearch[index],

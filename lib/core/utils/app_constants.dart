@@ -232,7 +232,7 @@ List<String> englishQuranSuras = [
   "Al-Falaq",
   "An-Nas",
 ];
-List<String> ayaNumber = [
+List<String> suraVerses = [
   '7',
   '286',
   '200',
@@ -353,6 +353,6 @@ List<SuraDM> suras = List.generate(114, (int index) {
     index: index + 1,
     suraNameEn: englishQuranSuras[index],
     suraNameAr: arabicQuranSuras[index],
-    verses: ayaNumber[index],
+    verses: suraVerses[index],
   );
 });

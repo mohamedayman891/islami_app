@@ -6,8 +6,8 @@ import 'package:islami_app/core/utils/app_styles.dart';
 import 'package:islami_app/features/home/time/widget/azkar_item.dart';
 
 class AzkarDetailedScreen extends StatefulWidget {
-  const AzkarDetailedScreen({super.key, required this.azkar});
-  final AzkarDM azkar;
+  const AzkarDetailedScreen({super.key, required this.azkarDM});
+  final AzkarDM azkarDM;
 
   @override
   State<AzkarDetailedScreen> createState() => _AzkarDetailedScreenState();
@@ -27,7 +27,7 @@ class _AzkarDetailedScreenState extends State<AzkarDetailedScreen> {
         ),
         backgroundColor: AppColors.backgroundColor,
         centerTitle: true,
-        title: Text(widget.azkar.azkarEn, style: AppStyles.bold20Gold),
+        title: Text(widget.azkarDM.azkarEn, style: AppStyles.bold20Gold),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -39,14 +39,14 @@ class _AzkarDetailedScreenState extends State<AzkarDetailedScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Image.asset(Assets.imagesLeftCorner),
-                Text(widget.azkar.azkarEnAr, style: AppStyles.bold24Gold),
+                Text(widget.azkarDM.azkarAr, style: AppStyles.bold24Gold),
                 Image.asset(Assets.imagesRightCorner),
               ],
             ),
             const SizedBox(height: 16),
             Expanded(
-              child: FutureBuilder<List<Map<String, dynamic>>>(
-                future: widget.azkar.loadAzkar(),
+              child: FutureBuilder(
+                future: widget.azkarDM.loadAzkar(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(
@@ -65,7 +65,7 @@ class _AzkarDetailedScreenState extends State<AzkarDetailedScreen> {
                         const SizedBox(height: 12),
                         ElevatedButton(
                           onPressed: () {
-                            widget.azkar.loadAzkar();
+                            widget.azkarDM.loadAzkar();
                             setState(() {});
                           },
                           child: const Text("Try Again"),
@@ -74,19 +74,9 @@ class _AzkarDetailedScreenState extends State<AzkarDetailedScreen> {
                     );
                   }
                   final azkarList = snapshot.data ?? [];
-                  if (azkarList.isEmpty) {
-                    return const Center(
-                      child: Text(
-                        "No Azkar found",
-                        style: AppStyles.bold16White,
-                      ),
-                    );
-                  }
                   return ListView.separated(
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     itemCount: azkarList.length,
-                    separatorBuilder: (context, index) =>
-                        const SizedBox(height: 16),
                     itemBuilder: (context, index) {
                       return AzkarItem(
                         zekrData: azkarList[index],
@@ -94,6 +84,8 @@ class _AzkarDetailedScreenState extends State<AzkarDetailedScreen> {
                         totalAzkar: azkarList.length,
                       );
                     },
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 16),
                   );
                 },
               ),

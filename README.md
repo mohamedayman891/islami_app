@@ -8,6 +8,7 @@ Islami App is a **Flutter** application that gathers essential Islamic resources
 
 ## AppScreen
 
+<div align="center">
 <table>
   <tr>
     <td align="center"><img src="assets/screenshot/splash1.png" width="155"><br><sub>Splash Screen</sub></td>
@@ -34,6 +35,7 @@ Islami App is a **Flutter** application that gathers essential Islamic resources
     <td align="center"><img src="assets/screenshot/azkar_detailed.png" width="155" ><br><sub>Azkar Detailed Screen</sub></td>
   </tr>
 </table>
+</div>
 
 ## Features
 

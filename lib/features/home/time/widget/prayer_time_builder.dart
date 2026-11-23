@@ -29,7 +29,7 @@ class _PrayerTimeBuilderState extends State<PrayerTimeBuilder> {
         } else if (snapshot.hasError) {
           return Column(
             children: [
-              Text("Something went wrong"),
+              Text("Something went wrong", style: AppStyles.bold14White),
               ElevatedButton(
                 onPressed: () {
                   ApiManager.getPrayer();
@@ -60,7 +60,6 @@ class _PrayerTimeBuilderState extends State<PrayerTimeBuilder> {
             children: [
               Positioned(
                 top: 10,
-                bottom: 0,
                 left: 0,
                 right: 0,
                 child: Row(

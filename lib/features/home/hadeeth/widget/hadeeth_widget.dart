@@ -15,7 +15,7 @@ class HadeethWidget extends StatefulWidget {
 
 class _HadeethWidgetState extends State<HadeethWidget> {
   String title = "";
-  String content = "";
+  String hadeethContent = "";
   @override
   void initState() {
     readHadeethContent();
@@ -28,7 +28,9 @@ class _HadeethWidgetState extends State<HadeethWidget> {
       onTap: () {
         Navigator.push(
           context,
-          AppRoute.hadeethDetailed(HadeethDM(title: title, content: content)),
+          AppRoute.hadeethDetailed(
+            HadeethDM(title: title, content: hadeethContent),
+          ),
         );
       },
       child: Container(
@@ -66,7 +68,7 @@ class _HadeethWidgetState extends State<HadeethWidget> {
               child: SingleChildScrollView(
                 child: Center(
                   child: Text(
-                    content,
+                    hadeethContent,
                     textAlign: TextAlign.center,
                     textDirection: TextDirection.rtl,
                     style: AppStyles.bold16Black,
@@ -87,7 +89,7 @@ class _HadeethWidgetState extends State<HadeethWidget> {
     final List<String> lines = fileContent.split("\n");
     title = lines[0];
     lines.removeAt(0);
-    content = lines.join();
+    hadeethContent = lines.join();
     setState(() {});
   }
 }

@@ -45,13 +45,11 @@ class _HadeethDetailedScreenState extends State<HadeethDetailedScreen> {
             ),
             Expanded(
               child: SingleChildScrollView(
-                child: Center(
-                  child: Text(
-                    widget.hadeethDM.content,
-                    style: AppStyles.bold20Gold,
-                    textAlign: TextAlign.center,
-                    textDirection: TextDirection.rtl,
-                  ),
+                child: Text(
+                  widget.hadeethDM.content,
+                  style: AppStyles.bold20Gold,
+                  textAlign: TextAlign.center,
+                  textDirection: TextDirection.rtl,
                 ),
               ),
             ),

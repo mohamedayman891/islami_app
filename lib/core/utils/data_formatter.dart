@@ -1,7 +1,7 @@
 import 'package:intl/intl.dart';
 import 'package:islami_app/core/model/prayer_times_dm.dart';
 
-class DataFormatter {
+abstract class DataFormatter {
   static String formateGregorian(Gregorian gregorian) {
     return '${gregorian.day} ${gregorian.month!.en!.substring(0, 3)}, \n ${gregorian.year}';
   }
@@ -36,9 +36,9 @@ class DataFormatter {
           prayerDateTime.isAtSameMomentAs(now)) {
         prayerDateTime = prayerDateTime.add(Duration(days: 1));
       }
-      /// {"key" : "fajr" , }
-      /// "time" : Today 2:30 pm  /// value
-      /// "original" : "14:30" } /// value
+      // {"key" : "fajr" , }
+      // "time" : Today 2:30 pm  /// value
+      // "original" : "14:30" } /// value
       return MapEntry(entry.key, {
         "time": prayerDateTime,
         "originalString": entry.value,
@@ -63,20 +63,20 @@ class DataFormatter {
 
     prayerTimes.forEach((prayerName, prayerTimeString) {
       final timeParts = prayerTimeString.toString().split(":");
+      final hour = int.parse(timeParts[0]);
+      final minute = int.parse(timeParts[1]);
       DateTime prayerDateTime = DateTime(
         now.year,
         now.month,
         now.day,
-        int.parse(timeParts[0]),
-        int.parse(timeParts[1]),
+        hour,
+        minute,
       );
-
       if (!prayerDateTime.isAfter(now)) {
         prayerDateTime = prayerDateTime.add(Duration(days: 1));
       }
       timeDifference[prayerName] = prayerDateTime.difference(now);
     });
     return timeDifference;
-
   }
 }

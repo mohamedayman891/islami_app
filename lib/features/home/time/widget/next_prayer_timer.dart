@@ -18,7 +18,6 @@ class _NextPrayerTimerState extends State<NextPrayerTimer> {
   void initState() {
     super.initState();
     _timeRemaining = widget.timeRemaining;
-
     timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
         if (_timeRemaining.inSeconds > 0) {

@@ -5,15 +5,15 @@ import 'package:islami_app/core/utils/app_route.dart';
 import 'package:islami_app/core/utils/app_images.dart';
 import 'package:islami_app/core/utils/app_styles.dart';
 
-class SurasList extends StatelessWidget {
-  const SurasList({super.key, required this.suraDM, required this.onBack});
+class SuraList extends StatelessWidget {
+  const SuraList({super.key, required this.suraDM, required this.onBack});
   final SuraDM suraDM;
   final Function() onBack;
 
   Future<void> setSura() async {
     List<String> allSura = SharedPrefs.getStringList("mostRecently") ?? [];
     allSura.add(suraDM.index.toString()); // store sura
-    allSura = allSura.toSet().toList(); //(set) remove the repeated sura
+    allSura = allSura.toSet().toList(); //(toSet) remove the repeated sura
     SharedPrefs.setStringList("mostRecently", allSura); // store list
   }
 
@@ -23,9 +23,9 @@ class SurasList extends StatelessWidget {
       onTap: () {
         Navigator.push(context, AppRoute.suraDetailed(suraDM)).then((value) {
           onBack();
-        });
+        }); // then => بتشتغل كمان شويه
         setSura();
-      }, // then => بتشتغل كمان شويه
+      },
       child: ListTile(
         contentPadding: EdgeInsets.zero,
         leading: Container(
@@ -33,7 +33,7 @@ class SurasList extends StatelessWidget {
           height: 50,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(Assets.imagesSureNumber),
+              image: AssetImage(Assets.imagesSuraNumber),
               fit: BoxFit.contain,
             ),
           ),

@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:islami_app/core/model/prayer_times_dm.dart';
@@ -7,14 +6,13 @@ import 'package:islami_app/core/model/radio_response_dm.dart';
 import 'package:islami_app/core/model/reciter_response_dm.dart';
 
 class ApiManager {
-  static Future<RadioResponseDM> getRadioData() async {
+  static Future<RadioResponseDM> getRadiosData() async {
     try {
       Uri uri = Uri.parse("https://www.mp3quran.net/api/v3/radios?language=en");
       var response = await http.get(uri);
       var jsonResponse = jsonDecode(response.body);
       return RadioResponseDM.fromJson(jsonResponse);
     } catch (e) {
-      log(e.toString());
       rethrow;
     }
   }
@@ -28,7 +26,6 @@ class ApiManager {
       var jsonResponse = jsonDecode(response.body);
       return ReciterResponseDM.fromJson(jsonResponse);
     } catch (e) {
-      log(e.toString());
       rethrow;
     }
   }

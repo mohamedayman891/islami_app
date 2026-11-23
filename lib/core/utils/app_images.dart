@@ -120,7 +120,7 @@ class Assets {
 
   static const String imagesSplashScreen = "assets/images/splash_screen.png";
 
-  static const String imagesSureNumber = "assets/images/sure_number.png";
+  static const String imagesSuraNumber = "assets/images/sura_number.png";
 
   static const String imagesTasabeehAzkar = "assets/images/tasabeeh_azkar.png";
 

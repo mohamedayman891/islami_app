@@ -51,7 +51,7 @@ class _RadioTapState extends State<RadioTap> {
                     color: AppColors.white,
                   ),
                   tabs: [
-                    Tab(child: Text('Radio')),
+                    Tab(child: Text('Radios')),
                     Tab(child: Text('Reciters')),
                   ],
                 ),
@@ -61,7 +61,7 @@ class _RadioTapState extends State<RadioTap> {
                 child: TabBarView(
                   children: [
                     FutureBuilder(
-                      future: ApiManager.getRadioData(),
+                      future: ApiManager.getRadiosData(),
                       builder: (context, snapshot) {
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
@@ -73,10 +73,13 @@ class _RadioTapState extends State<RadioTap> {
                         } else if (snapshot.hasError) {
                           return Column(
                             children: [
-                              Text("Something Went Wrong"),
+                              Text(
+                                "Something Went Wrong",
+                                style: AppStyles.bold14White,
+                              ),
                               ElevatedButton(
                                 onPressed: () {
-                                  ApiManager.getRadioData();
+                                  ApiManager.getRadiosData();
                                   setState(() {});
                                 },
                                 child: Text("Try Again"),
@@ -107,7 +110,7 @@ class _RadioTapState extends State<RadioTap> {
                         } else if (snapshot.hasError) {
                           return Column(
                             children: [
-                              Text("Something Went Wrong"),
+                              Text("Something Went Wrong", style: AppStyles.bold14White,),
                               ElevatedButton(
                                 onPressed: () {
                                   ApiManager.getRecitersData();

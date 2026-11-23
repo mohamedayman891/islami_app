@@ -17,6 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 1), () async {
+      if (!mounted) return;
       bool isFirstTime = SharedPrefs.getBool('firstTime') ?? true;
       if (isFirstTime) {
         SharedPrefs.setBool('firstTime', false);

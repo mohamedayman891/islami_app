@@ -23,12 +23,12 @@ class OnBoardingDM {
       subtitle: "Read, and your Lord is the Most Generous",
     ),
     OnBoardingDM(
-      image: Assets.imagesOnBoarding3,
+      image: Assets.imagesOnBoarding4,
       title: "Bearish",
       subtitle: "Praise the name of your Lord, the Most High",
     ),
     OnBoardingDM(
-      image: Assets.imagesOnBoarding3,
+      image: Assets.imagesOnBoarding5,
       title: "Holy Quran Radio",
       subtitle:
           "You can listen to the Holy Quran Radio through the application for free and easily",

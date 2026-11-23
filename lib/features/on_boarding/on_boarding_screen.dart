@@ -57,12 +57,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 itemCount: OnBoardingDM.onBoardingData.length,
                 itemBuilder: (context, index) {
                   return OnBoardingItem(
-                    onBoarding: OnBoardingDM.onBoardingData[index],
+                    onBoardingDM: OnBoardingDM.onBoardingData[index],
                   );
                 },
               ),
             ),
-            // Expanded(child: SizedBox(height: 15)),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,7 +69,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   GestureDetector(
                     onTap: () {
                       pageController.previousPage(
-                        duration: Duration(milliseconds: 300),
+                        duration: Duration(milliseconds: 200),
                         curve: Curves.easeInOut,
                       );
                     },
@@ -81,6 +80,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                   DotsIndicator(
                     dotsCount: 5,
+                    animate: true,
                     position: currentPage.toDouble(),
                     decorator: DotsDecorator(
                       color: AppColors.greyDots,
@@ -94,17 +94,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      if (currentPage == 4) {
+                      if (currentPage ==
+                          OnBoardingDM.onBoardingData.length - 1) {
                         Navigator.push(context, AppRoute.homeScreen);
                       } else {
                         pageController.nextPage(
-                          duration: Duration(milliseconds: 300),
+                          duration: Duration(milliseconds: 200),
                           curve: Curves.easeInOut,
                         );
                       }
                     },
                     child: Text(
-                      currentPage == 4 ? "Finish" : "Next",
+                      currentPage == OnBoardingDM.onBoardingData.length - 1
+                          ? "Finish"
+                          : "Next",
                       style: AppStyles.bold16Gold,
                     ),
                   ),

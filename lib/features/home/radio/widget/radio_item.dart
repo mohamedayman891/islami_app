@@ -22,19 +22,18 @@ class _RadioItemState extends State<RadioItem> {
         final isCurrentPlayer = provider.currentPlayingUrl == widget.url;
         final isPlaying = provider.isPlaying && isCurrentPlayer;
         final isMuted = isCurrentPlayer && !provider.isVolumeUp;
-
         return Container(
           margin: const EdgeInsets.symmetric(vertical: 8),
           padding: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: AppColors.primaryColor,
             image: DecorationImage(
               fit: BoxFit.fill,
               image: AssetImage(
                 isPlaying ? Assets.imagesSoundWave : Assets.imagesIslamiLogo,
               ),
             ),
-            borderRadius: BorderRadius.circular(20),
-            color: AppColors.primaryColor,
           ),
           child: Column(
             children: [

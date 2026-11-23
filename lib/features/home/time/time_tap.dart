@@ -25,38 +25,36 @@ class _TimeTapState extends State<TimeTap> {
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Image.asset(
-                Assets.imagesIslamiLogo,
-                height: size.height * 0.2,
-                width: double.infinity,
+        child: Column(
+          children: [
+            Image.asset(
+              Assets.imagesIslamiLogo,
+              height: size.height * 0.2,
+              width: double.infinity,
+            ),
+            SizedBox(
+              height: size.height * 0.33,
+              child: const PrayerTimeBuilder(),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [Text("Azkar", style: AppStyles.bold20White)],
               ),
-              SizedBox(
-                height: size.height * 0.33,
-                child: const PrayerTimeBuilder(),
+            ),
+            SizedBox(
+              height: size.height * 0.25,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: AzkarDM.azkarCategories.length,
+                itemBuilder: (context, index) {
+                  return AzkarCard(azkarDM: AzkarDM.azkarCategories[index]);
+                },
               ),
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [Text("Azkar", style: AppStyles.bold20White)],
-                ),
-              ),
-              SizedBox(
-                height: size.height * 0.25,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: AzkarDM.azkarCategories.length,
-                  itemBuilder: (context, index) {
-                    return AzkarCard(azkar: AzkarDM.azkarCategories[index]);
-                  },
-                ),
-              ),
-              const SizedBox(height: 5),
-            ],
-          ),
+            ),
+            // const SizedBox(height: 27),
+          ],
         ),
       ),
     );

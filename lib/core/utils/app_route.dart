@@ -23,15 +23,12 @@ abstract final class AppRoute {
       MaterialPageRoute(
         builder: (context) => SuraDetailedScreen(suraDM: suraDM),
       );
-
+  static MaterialPageRoute<dynamic> hadeethDetailed(HadeethDM hadeethDM) =>
+      MaterialPageRoute(
+        builder: (context) => HadeethDetailedScreen(hadeethDM: hadeethDM),
+      );
   static MaterialPageRoute<dynamic> azkarDetailed(AzkarDM azkarDM) =>
       MaterialPageRoute(
-        builder: (context) => AzkarDetailedScreen(azkar: azkarDM),
+        builder: (context) => AzkarDetailedScreen(azkarDM: azkarDM),
       );
-
-  static MaterialPageRoute<dynamic> hadeethDetailed(
-     HadeethDM hadeethDM) => MaterialPageRoute(
-    builder: (context) =>
-        HadeethDetailedScreen(hadeethDM: hadeethDM),
-  );
 }

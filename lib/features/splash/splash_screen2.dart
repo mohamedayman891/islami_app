@@ -29,8 +29,8 @@ class SplashScreen2 extends StatelessWidget {
               const Spacer(),
               FadeInUp(
                 onFinish: (direction) {
-                Future.delayed(Duration(seconds: 1), () async {
-                  if(context.mounted) Navigator.pushReplacement(context, AppRoute.onBoardingScreen);
+                Future.delayed(Duration(seconds: 1), (){
+                  if(context.mounted)Navigator.pushReplacement(context, AppRoute.onBoardingScreen);
                   });
                 },
                 delay: Duration(seconds: 1),

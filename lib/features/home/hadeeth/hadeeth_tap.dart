@@ -3,16 +3,17 @@ import 'package:material_ui/material_ui.dart';
 import 'package:islami_app/core/utils/app_images.dart';
 import 'package:islami_app/features/home/hadeeth/widget/hadeeth_widget.dart';
 
-class HadethTap extends StatefulWidget {
-  const HadethTap({super.key});
+class HadeethTap extends StatefulWidget {
+  const HadeethTap({super.key});
 
   @override
-  State<HadethTap> createState() => _HadethTapState();
+  State<HadeethTap> createState() => _HadeethTapState();
 }
 
-class _HadethTapState extends State<HadethTap> {
+class _HadeethTapState extends State<HadeethTap> {
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.sizeOf(context).height;
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -27,7 +28,7 @@ class _HadethTapState extends State<HadethTap> {
             flex: 2,
             child: Image.asset(
               Assets.imagesIslamiLogo,
-              height: MediaQuery.sizeOf(context).height * 0.2,
+              height: height * 0.2,
               width: double.infinity,
             ),
           ),

@@ -3,21 +3,21 @@ import 'package:islami_app/core/model/onboarding_dm.dart';
 import 'package:islami_app/core/utils/app_styles.dart';
 
 class OnBoardingItem extends StatelessWidget {
-  const OnBoardingItem({super.key, required this.onBoarding});
-  final OnBoardingDM onBoarding;
+  const OnBoardingItem({super.key, required this.onBoardingDM});
+  final OnBoardingDM onBoardingDM;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(child: Image.asset(onBoarding.image)),
+        Expanded(child: Image.asset(onBoardingDM.image)),
         SizedBox(height: 10),
-        Text(onBoarding.title, style: AppStyles.bold24Gold),
+        Text(onBoardingDM.title, style: AppStyles.bold24Gold),
         SizedBox(height: 20),
-        onBoarding.subtitle == null
+        onBoardingDM.subtitle == null
             ? SizedBox.shrink()
             : Text(
-                onBoarding.subtitle!,
+                onBoardingDM.subtitle!,
                 style: AppStyles.bold20Gold,
                 textAlign: TextAlign.center,
                 maxLines: 2,

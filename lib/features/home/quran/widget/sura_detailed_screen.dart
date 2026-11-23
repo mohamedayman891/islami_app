@@ -52,13 +52,11 @@ class _SuraDetailedScreenState extends State<SuraDetailedScreen> {
             const SizedBox(height: 20),
             Expanded(
               child: SingleChildScrollView(
-                child: Center(
-                  child: Text(
-                    suraContent,
-                    style: AppStyles.bold20Gold,
-                    textAlign: TextAlign.center,
-                    textDirection: TextDirection.rtl,
-                  ),
+                child: Text(
+                  suraContent,
+                  style: AppStyles.bold20Gold,
+                  textAlign: TextAlign.center,
+                  textDirection: TextDirection.rtl,
                 ),
               ),
             ),
@@ -75,7 +73,7 @@ class _SuraDetailedScreenState extends State<SuraDetailedScreen> {
     suraContent = await future;
     List<String> lines = suraContent.split("\n"); // number of aya
     for (int i = 0; i < lines.length; i++) {
-      lines[i] += "{${i + 1}}";
+      lines[i] += " {${i + 1}} ";
     }
     suraContent = lines.join();
     setState(() {});
